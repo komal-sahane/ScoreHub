@@ -1,4 +1,8 @@
 package com.spring.service;
 
-public interface StudentService {
+import com.spring.model.Student;
+
+public interface StudentService
+{
+    String saveStudent(Student student);
 }
