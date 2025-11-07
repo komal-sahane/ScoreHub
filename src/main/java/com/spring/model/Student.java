@@ -1,5 +1,8 @@
 package com.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +18,7 @@ public class Student
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonIgnore
     private int id;
     private String Fname;
     private String Lname;
@@ -43,7 +47,10 @@ public class Student
     }
     @Enumerated(EnumType.STRING)
     private Semester semester;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
+    @Schema(type = "string", example = "2025", description = "Academic year in yyyy format")
     private Year AcademicYear;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "student_subject",
@@ -51,6 +58,7 @@ public class Student
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
     private List<Subject> subject;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "result_result_id")
     private Result result;

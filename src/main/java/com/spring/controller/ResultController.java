@@ -2,6 +2,8 @@ package com.spring.controller;
 
 import com.spring.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,4 +13,10 @@ public class ResultController
 {
     @Autowired
     private ResultService resultService;
+
+    @GetMapping("/show")
+    public String Result()
+    {
+        return "Result will shown later";
+    }
 }
