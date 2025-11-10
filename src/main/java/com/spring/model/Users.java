@@ -9,22 +9,21 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Table(name = "users")
 public class Users
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int User_id;
-    private String Username;
-    private String Password;
-    private String Email;
-    private enum Role
+    private int user_id;
+    private String username;
+    private String password;
+    private String email;
+    private enum role
     {
         ADMIN,
         TEACHER,
         STUDENT
     }
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private role role;
 
 }

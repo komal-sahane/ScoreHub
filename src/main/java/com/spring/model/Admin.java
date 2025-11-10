@@ -16,9 +16,9 @@ public class Admin
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Admin_id;
-    private String Adminname;
+    private int admin_id;
+    private String admin_name;
     private String email;
     private String password;
-    private String Full_Name;
+    private String full_name;
 }
