@@ -21,7 +21,6 @@ public class Subject
     private String max_marks;
     private long marks_obtain;
     private String teacher_name;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
