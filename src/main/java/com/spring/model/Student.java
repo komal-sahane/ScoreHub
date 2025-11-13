@@ -24,22 +24,20 @@ public class Student
     private String address;
     private String email;
     private long mobilenum;
-    public enum gender
+    public enum Gender
     {
         FEMALE,
         MALE,
         OTHER
     }
     @Enumerated(EnumType.STRING)
-    private gender gender;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
-    @Schema(type = "string", example = "2025", description = "Academic year in yyyy format")
-    private Year academicyear;
+    private Gender gender;
+    private int academicyear;
 
 
 
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "departmentid")
     private Department department;
 
 
@@ -47,15 +45,15 @@ public class Student
     @ManyToMany
     @JoinTable(
             name = "student_subject",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "subject_id")
+            joinColumns = @JoinColumn(name = "studentid"),
+            inverseJoinColumns = @JoinColumn(name = "subjectid")
     )
     private List<Subject> subject;
 
 
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "result_result_id")
+    @JoinColumn(name = "result_resultid")
     private Result result;
 
 }

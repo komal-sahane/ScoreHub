@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import com.spring.dto.StudentRequest;
 import com.spring.model.Student;
 import com.spring.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,9 @@ public class StudentController
     private StudentService studentService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addStudent(@RequestBody Student student)
+    public ResponseEntity<String> addStudent(@RequestBody StudentRequest studentdto)
     {
-        System.err.println(student);
-        studentService.saveStudent(student);
+      studentService.saveStudent(studentdto);
         return new ResponseEntity<>("Student Saved", HttpStatus.CREATED);
     }
 
