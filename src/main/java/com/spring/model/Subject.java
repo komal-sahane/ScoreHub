@@ -21,9 +21,11 @@ public class Subject
     private String maxmarks;
     private long marksobtain;
     private String teachername;
+
     @ManyToOne
     @JoinColumn(name = "departmentid")
     private Department department;
+
     @JsonIgnore
     @ManyToMany
     (mappedBy = "subject")

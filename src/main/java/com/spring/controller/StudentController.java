@@ -18,10 +18,10 @@ public class StudentController
     private StudentService studentService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addStudent(@RequestBody StudentRequest studentdto)
+    public ResponseEntity<String> addStudent(@RequestBody Student student)
     {
-      studentService.saveStudent(studentdto);
-        return new ResponseEntity<>("Student Saved", HttpStatus.CREATED);
+        String msg = studentService.saveStudent(student);
+        return new ResponseEntity<>(msg , HttpStatus.CREATED);
     }
 
     @GetMapping("/show")
