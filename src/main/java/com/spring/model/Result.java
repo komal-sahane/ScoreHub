@@ -13,13 +13,13 @@ public class Result
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int result_id;
-    private long Total_Marks;
-    private long Percentage;
-    private String Grade;
-    private int ActiveBacklogs;
+    private int resultid;
+    private long totalmarks;
+    private long percentage;
+    private String grade;
+    private int activebacklogs;
     @OneToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "studentid")
     private Student student;
 
 }

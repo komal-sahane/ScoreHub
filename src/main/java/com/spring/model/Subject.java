@@ -1,10 +1,10 @@
 package com.spring.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
+ 
 import java.util.List;
 @Entity
 @Getter
@@ -14,14 +14,20 @@ public class Subject
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Sub_id;
-    private String Sub_Name;
-    private String Sub_Code;
-    private String Max_Marks;
-    private long Marks_obtain;
-    private String Teacher_Name;
+    @JsonIgnore
+    private int subid;
+    private String subname;
+    private String subcode;
+    private String maxmarks;
+    private long marksobtain;
+    private String teachername;
+
+    @ManyToOne
+    @JoinColumn(name = "departmentid")
+    private Department department;
+
+    @JsonIgnore
     @ManyToMany
     (mappedBy = "subject")
     private List<Student> student;
-
 }

@@ -1,4 +1,12 @@
 package com.spring.service;
 
-public interface SubjectService {
+import com.spring.model.Subject;
+
+import java.util.List;
+
+public interface SubjectService
+{
+    String saveSubject(Subject subject);
+
+    List<Subject> getAllSubject();
 }
