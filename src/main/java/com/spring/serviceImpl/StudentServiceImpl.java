@@ -5,9 +5,11 @@ import com.spring.dto.StudentRequest;
 
 import com.spring.model.Department;
 import com.spring.model.Student;
+import com.spring.model.StudentSubject;
 import com.spring.model.Subject;
 import com.spring.repository.DepartmentRepository;
 import com.spring.repository.StudentRepository;
+import com.spring.repository.StudentSubjectRepository;
 import com.spring.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,8 @@ public class StudentServiceImpl implements StudentService
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    @Autowired
+    private StudentSubjectRepository studentSubjectRepository;
     @Override
     public String saveStudent(Student student)
     {
@@ -31,13 +35,20 @@ public class StudentServiceImpl implements StudentService
         Department department = departmentRepository.findById(student.getDepartment().getDepartmentid())
                 .orElseThrow(() -> new RuntimeException("Department not found"));
 
-        List<Subject> deptsubjects = department.getSubject();
-        List<Subject> studentsubject = new ArrayList<>(deptsubjects);
-        student.setSubject(studentsubject);
         student.setDepartment(department);
-        studentRepository.save(student);
-        return "Student Saved";
+        Student savedStudent = studentRepository.save(student);
+        List<Subject> departmentsubject = department.getSubject();
 
+        for(Subject subject : departmentsubject)
+        {
+            StudentSubject studentSubject = new StudentSubject();
+            studentSubject.setStudentId(savedStudent.getId());
+            studentSubject.setSubjectId(subject.getSubid());
+            studentSubject.setMarksobt(null);
+
+            studentSubjectRepository.save(studentSubject);
+        }
+        return "Student Saved";
 
 
 

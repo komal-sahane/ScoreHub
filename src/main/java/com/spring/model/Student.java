@@ -39,16 +39,6 @@ public class Student
 
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "student_subject",
-            joinColumns = @JoinColumn(name = "studentid"),
-            inverseJoinColumns = @JoinColumn(name = "subjectid")
-    )
-    private List<Subject> subject;
-
-
-    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "result_resultid")
     private Result result;

@@ -19,15 +19,10 @@ public class Subject
     private String subname;
     private String subcode;
     private String maxmarks;
-    private long marksobtain;
     private String teachername;
 
     @ManyToOne
     @JoinColumn(name = "departmentid")
     private Department department;
 
-    @JsonIgnore
-    @ManyToMany
-    (mappedBy = "subject")
-    private List<Student> student;
 }
