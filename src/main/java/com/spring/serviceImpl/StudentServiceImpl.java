@@ -1,8 +1,5 @@
 package com.spring.serviceImpl;
 
-import com.spring.dto.DepartmentRequest;
-import com.spring.dto.StudentRequest;
-
 import com.spring.model.Department;
 import com.spring.model.Student;
 import com.spring.model.StudentSubject;
@@ -42,8 +39,8 @@ public class StudentServiceImpl implements StudentService
         for(Subject subject : departmentsubject)
         {
             StudentSubject studentSubject = new StudentSubject();
-            studentSubject.setStudentId(savedStudent.getId());
-            studentSubject.setSubjectId(subject.getSubid());
+            studentSubject.setStudentid(savedStudent.getId());
+            studentSubject.setSubid(subject.getSubid());
             studentSubject.setMarksobt(null);
 
             studentSubjectRepository.save(studentSubject);

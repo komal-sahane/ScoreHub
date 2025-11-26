@@ -14,7 +14,6 @@ public class Student
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private int id;
     private String fname;
     private String lname;

@@ -14,7 +14,6 @@ public class Subject
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private int subid;
     private String subname;
     private String subcode;
